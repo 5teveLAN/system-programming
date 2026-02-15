@@ -1,0 +1,19 @@
+
+while (not EOF)
+do
+read 80 char to readchars[]
+find the last space and record its index
+write readchars[0-index] to dest file
+set current_ptr = index
+done
+
+cur_pt
+buffer_cnt
+char_cnt
+last_space
+
+while (not EOF)
+    if char_cnt>80
+        cur_pt=last_space
+        buffer[last_space]='\n'
+    
