@@ -9,16 +9,11 @@ int main () {
   pid_t pid;
   pid = fork ();
   //注意，printf是在fork後面
-  printf ("%d", var);
-  if (pid == 0) {
-    /* child 執行 */
-    fprintf(stderr, "chlid\n");
-    var = 1;
-  } else if (pid > 0) {
-    /* parent 執行 */
-    fprintf(stderr, "parent\n");
-    var = 2;
-  }
-  printf ("%d", var);
+  if (pid > 0)
+    printf("this is parent, child's PID:%d\n", pid);
+  else if (pid == 0)
+    printf("this is child\n");
+  else 
+    printf("fork error\n");
   return 0;
 }

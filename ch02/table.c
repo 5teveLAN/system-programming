@@ -8,7 +8,7 @@
 #include <sched.h>
 #include <assert.h>
 
-#define size 1200
+#define size 10000
 long long table[size][size];
 long long col_m;
 long long row_m;
@@ -18,7 +18,10 @@ long long pseudo_rand=0;
 double ts_to_double(struct timespec t) {
 	return (double)(t.tv_sec * 1000000000 + t.tv_nsec)/1000000000;
 }
-
+void heavy_work() {
+    volatile int i;
+    for (i = 0; i < 100000000; i++); // 讓它跑久一點
+}
 void initTable()
 {
 	int i, j;
@@ -47,6 +50,7 @@ void sumRow()
 
 int main()
 {
+    //heavy_work();
 	struct timespec row1, row2;
 	struct timespec col1, col2;
 	struct timespec init1, init2;

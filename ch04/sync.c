@@ -21,11 +21,11 @@ int main(int argc, char** argv) {
 	getchar();
 
 	fd = open("./syncFile.data",O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	for(num=0; num <=100000; num++) {
+	for(num=0; num <=10000; num++) {
 		write(fd, "1234", sizeof("1234"));
 		//將資料立即同步到檔案系統中
 		fsync(fd);
-		if (num%10000==1) {
+		if (num%1000==1) {
 			write(1, "*", sizeof("*"));
 			fsync(1);
 		}

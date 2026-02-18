@@ -10,14 +10,18 @@
  */
 int main(int argc, char** argv) {
     uid_t ruid, euid, suid;
-    
-    // 使用 getresuid 函數獲取當前進程的實際用戶 ID、有效用戶 ID 和保存的設定 ID
+    uid_t id;
     getresuid(&ruid, &euid, &suid);
     
-    // 輸出當前進程的用戶 ID 以及對應的用戶名稱
-    printf("ruid = %d, euid = %d, suid = %d\n", ruid, euid, suid);
-    printf("ruid = %s, ", getpwuid(ruid)->pw_name);
-    printf("euid = %s, ", getpwuid(euid)->pw_name);
-    printf("suid = %s\n", getpwuid(suid)->pw_name);
+    // 使用 getresuid 函數獲取當前進程的實際用戶 ID、有效用戶 ID 和保存的設定 ID
+    while (scanf("%d", &id)){
+        setresuid(ruid, suid, suid);
+        setresuid(ruid, id, suid);
+
+        getresuid(&ruid, &euid, &suid);
+        
+        // 輸出當前進程的用戶 ID 以及對應的用戶名稱
+        printf("ruid = %d, euid = %d, suid = %d\n", ruid, euid, suid);
+    }
 }
 

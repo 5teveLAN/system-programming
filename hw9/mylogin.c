@@ -6,26 +6,30 @@
     • 挑戰：是否可以讓使用者輸入密碼，然後到/etc/shadow內驗證密碼呢？（不計分）
 */
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h> // For wait
        
 int main(){
     pid_t pid;
+    int status;
 
-    fgetc();
+    //getchar();
 
     pid = fork();
 
     // is child
     if (pid == 0){
-        execve("bash");
+        execlp("bash", "bash", NULL);
     }
     // is parent
     else if (pid > 0){
-        wait();
+        wait(&status);
+        printf("Program quit\n");
     }
     else {
         perror("error");
-        exit();
+        exit(EXIT_FAILURE);
     }
 
 } 

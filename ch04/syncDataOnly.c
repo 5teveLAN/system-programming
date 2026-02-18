@@ -22,11 +22,11 @@ int main(int argc, char** argv) {
 
 
 	fd = open("./syncDataOnly.data",O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	for(num=0; num <=100000; num++) {
+	for(num=0; num <=10000; num++) {
 		write(fd, "1234", sizeof("1234"));
 		//只同步data沒有同步metadata
 		fdatasync(fd);
-		if (num%10000==1) {
+		if (num%1000==1) {
 			write(1, "*", sizeof("*"));
 			fsync(1);
 		}

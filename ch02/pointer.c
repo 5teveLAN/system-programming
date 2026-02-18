@@ -3,7 +3,7 @@
 
 int main()
 {
-	int *p;			/*指標未給初始值 */
+	int *p = 0x00000;			/*指標未給初始值 */
 	int ret;
 	printf("輸入數字\n");
 	ret = scanf("%d", p);	//這一行會出錯

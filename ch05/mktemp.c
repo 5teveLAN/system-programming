@@ -5,7 +5,7 @@
 
 int main() {
     FILE* stream;
-    char tmpStr[] = "./shiwulo_XXXXXX";  // 宣告一個字符數組，用於存放隨機文件名
+    char tmpStr[] = "shiwulo_XXXXXX";  // 宣告一個字符數組，用於存放隨機文件名
     mktemp(tmpStr);  // 使用 mktemp 函數生成一個隨機文件名，並將其保存在字符數組 tmpStr 中
     printf("%s\n", tmpStr);  // 在控制台輸出隨機文件名
     stream = fopen(tmpStr, "w+");  // 創建一個以隨機文件名命名的文件，以讀寫方式打開，並獲取其文件指針
